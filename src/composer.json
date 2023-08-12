@@ -14,7 +14,7 @@
         "psr-4": {
             "App\\Controllers\\": "app/Controllers",
             "App\\Entities\\": "app/Entities",
-            "cli\\": "myapp.php"
+            "App\\Models\\": "app/Models" 
     }
     }
 }
