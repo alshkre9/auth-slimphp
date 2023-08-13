@@ -9,15 +9,16 @@ use App\Models\Model;
 
 class UserModel extends Model
 {
-    public function create($email, $password): User
+    public function create($email, $username,  $password): bool
     {
         $user = new User();
         $user->setEmail($email);
+        $user->setUsername($username);
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $user->setHash($hash);
         $this->entityManager->persist($user);
         $this->entityManager->flush();
-        return $user;
+        return true;
     }
     public function get($email, $password): User|null
     {

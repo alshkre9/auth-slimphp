@@ -1,7 +1,5 @@
 <?php
 
-namespace App;
-
 use App\Controllers\HomeController;
 use App\Controllers\AuthController;
 use App\Middleware\AuthMiddleware;

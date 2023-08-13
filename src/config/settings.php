@@ -17,7 +17,7 @@ return [
 
         $connection = DriverManager::getConnection([
             "driver" => "pdo_mysql",
-            "dbname" => "main",
+            "dbname" => $_ENV["dbname"],
             "user" => "root",
             "password" => "root",
             "host" => "db"

@@ -19,11 +19,12 @@ class AuthController extends Controller
     {
         $email = $_POST["email"];
         $password = $_POST["password"];
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($password) < 8) 
+        $username = $_POST["username"];
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($password) < 8 || !$username) 
         {
             return $response->withHeader("location", "/register")->withStatus(302);
         }
-        $this->userModel->create($email, $password);
+        $this->userModel->create($email, $username, $password);
         return $response->withHeader("location", "/register")->withStatus(302);
     }
 
