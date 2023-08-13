@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+
+{% block main %}
+    <form action="{{ form_url }}" method="post">
+        <input type="text" name="email" placeholder="email">
+        <input type="password" name="password" placeholder="password">
+        {% block confirmation %}{% endblock %}
+        <button type="submit">{{ name }}</button>
+    </form>
+{% endblock main %}

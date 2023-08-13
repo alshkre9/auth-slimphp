@@ -19,6 +19,11 @@ class User
     #[Column(type: "string")]
     private string $hash;
 
+    public function getId()
+    {
+        return $this->id;
+    }
+    
     public function setEmail(string $email): void
     {
         $this->email = $email;

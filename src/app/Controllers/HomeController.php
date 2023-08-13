@@ -10,6 +10,11 @@ class HomeController extends Controller
 {
     public function index(Request $request, Response $response)
     {
-        return $this->twig->render($response, "home.html");
+        session_start();
+        if (!$_SESSION)
+        {
+            return $response->withHeader("location", "/login")->withStatus(302);
+        }
+        return $this->twig->render($response, "home.html", ["user_id" => $_SESSION["user_id"]]);
     }
 }
