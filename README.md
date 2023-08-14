@@ -16,4 +16,4 @@ docker ps
 docker exec -it {id} bash
 php bin/cli-app.php o:s:c
 ```
-[visit](http://localhost:80/)
+[localhost:80/](http://localhost:80/)
