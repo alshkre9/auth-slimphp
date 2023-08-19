@@ -25,7 +25,7 @@ class AuthController extends Controller
             return $response->withHeader("location", "/register")->withStatus(302);
         }
         $this->userModel->create($email, $username, $password);
-        return $response->withHeader("location", "/register")->withStatus(302);
+        return $response->withHeader("location", "/login")->withStatus(302);
     }
 
     public function login(Request $request, Response $response)
@@ -45,6 +45,11 @@ class AuthController extends Controller
         return $response->withHeader("location", "/")->withStatus(302);
     }
 
+    public function google(Request $request, Response $response)
+    {
+        print_r($_POST);
+    }
+    
     public function logout(Request $request, Response $response)
     {
         session_start();

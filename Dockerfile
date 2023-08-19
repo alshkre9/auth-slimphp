@@ -13,4 +13,6 @@ WORKDIR /usr/local/etc/php
 RUN mv php.ini-development php.ini
 WORKDIR /var/www/html
 
+# RUN php bin/cli-app.php orm:schema-tool:create
+
 EXPOSE 80
