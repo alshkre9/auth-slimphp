@@ -13,5 +13,4 @@ $app->get("/register", AuthController::class . ":register");
 $app->post("/register/getForm", AuthController::class . ":registerForm");
 $app->get("/login", AuthController::class . ":login");
 $app->post("/login/getForm", AuthController::class . ":loginForm");
-$app->post("/login/google", AuthController::class . ":google");
 $app->get("/logout", AuthController::class . ":logout");
