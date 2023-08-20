@@ -15,6 +15,6 @@ class MainController extends Controller
         {
             return $response->withHeader("location", "/login")->withStatus(302);
         }
-        return $this->twig->render($response, "home.html", ["user_id" => $_SESSION["user_id"]]);
+        return $this->twig->render($response, "/main/home.twig", ["user_id" => $_SESSION["user_id"]]);
     }
 }

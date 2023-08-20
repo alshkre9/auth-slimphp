@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function register(Request $request, Response $response)
     {
-        return $this->twig->render($response, "/authentication/register.html", ["name" => "register", "form_url" => "/register/getForm"]);
+        return $this->twig->render($response, "/authentication/register.twig", ["name" => "register", "form_url" => "/register/getForm"]);
     }
 
     public function registerForm(Request $request, Response $response)
@@ -30,7 +30,7 @@ class AuthController extends Controller
 
     public function login(Request $request, Response $response)
     {
-        return $this->twig->render($response, "/authentication/login.html", ["name" => "login", "form_url" => "/login/getForm"]);
+        return $this->twig->render($response, "/authentication/login.twig", ["name" => "login", "form_url" => "/login/getForm"]);
     }
 
     public function loginForm(Request $request, Response $response)
