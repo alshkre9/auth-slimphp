@@ -1,5 +1,10 @@
 {% extends "index.twig" %}
 
 {% block main %}
-    
+    <div class="w-screen h-screen flex justify-center items-center">
+        <div class="flex flex-col h-fit shadow p-12">
+            <p>username: {{user.username}}</p>
+            <p>email: {{user.email}}</p>
+        </div>
+    </div>
 {% endblock %}

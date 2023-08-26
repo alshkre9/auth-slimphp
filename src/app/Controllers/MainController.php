@@ -10,11 +10,10 @@ class MainController extends Controller
 {
     public function index(Request $request, Response $response)
     {
-        session_start();
-        if (!$_SESSION)
+        if (!isset($_SESSION))
         {
-            return $response->withHeader("location", "/login")->withStatus(302);
+            session_start();
         }
-        return $this->twig->render($response, "/main/home.twig", ["user_id" => $_SESSION["user_id"]]);
+        return $this->twig->render($response, "/main/home.twig", ["user" => $this->userModel->get($_SESSION["user_id"])]);
     }
 }

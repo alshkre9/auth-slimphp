@@ -20,11 +20,10 @@ class AuthController extends Controller
         $email = $_POST["email"];
         $password = $_POST["password"];
         $username = $_POST["username"];
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($password) < 8 || !$username) 
+        if (!$this->userModel->create($email, $username, $password)) 
         {
             return $response->withHeader("location", "/register")->withStatus(302);
         }
-        $this->userModel->create($email, $username, $password);
         return $response->withHeader("location", "/login")->withStatus(302);
     }
 
@@ -36,7 +35,7 @@ class AuthController extends Controller
     public function loginForm(Request $request, Response $response)
     {
         session_start();
-        $user = $this->userModel->get($_POST["email"], $_POST["password"]);
+        $user = $this->userModel->getUser($_POST["email"], $_POST["password"]);
         if (!$user)
         {
             return $response->withHeader("location", "/login")->withStatus(302);
@@ -47,11 +46,11 @@ class AuthController extends Controller
 
     public function logout(Request $request, Response $response)
     {
-        session_start();
-        if (isset($_SESSION))
+        if (!isset($_SESSION))
         {
-            session_destroy();
+            session_start();
         }
+        session_destroy();
         return $response->withHeader("location", "/login")->withStatus(302);
     }
 }

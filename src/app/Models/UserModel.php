@@ -11,6 +11,10 @@ class UserModel extends Model
 {
     public function create($email, $username,  $password): bool
     {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($password) < 8 || !$username)
+        {
+            return false;
+        }
         $user = new User();
         $user->setEmail($email);
         $user->setUsername($username);
@@ -20,7 +24,7 @@ class UserModel extends Model
         $this->entityManager->flush();
         return true;
     }
-    public function get($email, $password): User|null
+    public function getUser($email, $password): User|null
     {
         $users = $this->entityManager->getRepository(User::class)->findBy(["email" => "$email"]);
         foreach($users as $user)
@@ -31,5 +35,10 @@ class UserModel extends Model
             }
         }
         return null;
+    }
+
+    public function get($id): User
+    {
+        return $this->entityManager->getRepository(User::class)->find($id);
     }
 }
