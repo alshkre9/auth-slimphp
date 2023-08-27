@@ -14,6 +14,10 @@ class MainController extends Controller
         {
             session_start();
         }
+        if (!array_key_exists("user_id", $_SESSION))
+        {
+        return $this->twig->render($response, "/main/home.twig");
+        }
         return $this->twig->render($response, "/main/home.twig", ["user" => $this->userModel->get($_SESSION["user_id"])]);
     }
 }

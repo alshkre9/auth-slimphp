@@ -24,7 +24,8 @@ class AuthController extends Controller
         {
             return $response->withHeader("location", "/register")->withStatus(302);
         }
-        return $response->withHeader("location", "/login")->withStatus(302);
+        $response = $response->withHeader("location", "/login")->withStatus(302);
+        return $response;
     }
 
     public function login(Request $request, Response $response)
@@ -41,7 +42,8 @@ class AuthController extends Controller
             return $response->withHeader("location", "/login")->withStatus(302);
         }
         $_SESSION["user_id"] = $user->getId();
-        return $response->withHeader("location", "/")->withStatus(302);
+        $response = $response->withHeader("location", "/")->withStatus(302);
+        return $response;
     }
 
     public function logout(Request $request, Response $response)
@@ -50,7 +52,8 @@ class AuthController extends Controller
         {
             session_start();
         }
-        session_destroy();
-        return $response->withHeader("location", "/login")->withStatus(302);
+        $_SESSION = [];
+        $response = $response->withHeader("location", "/login")->withStatus(302);
+        return $response;
     }
 }

@@ -2,9 +2,10 @@
 
 {% block main %}
     <div class="w-screen h-screen flex justify-center items-center">
-        <div class="flex flex-col h-fit shadow p-12">
+        <div class="flex flex-col h-fit items-center shadow p-12">
             <p>username: {{user.username}}</p>
             <p>email: {{user.email}}</p>
+            <a href="/logout" class="w-fit bg-red-500 text-white py-1 px-2 hover:bg-red-600 rounded">logout</a>
         </div>
     </div>
 {% endblock %}
