@@ -11,6 +11,7 @@ ______
 ```console
 cd src/
 composer install
+composer dump-autoload
 mv .env.example .env
 
 ### note: add db the dbname is main by default you can change it through data/schema.sql file
