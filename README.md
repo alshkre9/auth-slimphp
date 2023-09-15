@@ -10,7 +10,7 @@ ______
 # Usage
 ```console
 cd src/
-composer update
+composer install
 mv .env.example .env
 
 ### note: add db the dbname is main by default you can change it through data/schema.sql file
@@ -19,7 +19,7 @@ cd ../
 docker compose up --build -d 
 docker ps
 
-### note: copy the id of yourdirname-app
+### note: copy the id of the container
 
 docker exec -it {id} bash
 php bin/cli-app.php o:s:c
